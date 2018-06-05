@@ -12,13 +12,10 @@
                             <form method={{ $method }}>
                                 {{ csrf_field() }}
                                 <div class="form-group">
-                                    <label>Judul Resep</label>
-                                    <input class="form-control" name="name" placeholder="Judul Resep" value={{ $resep ?  $resep->name : ''  }}>
+                                    <label>Step</label>
+                                    <input class="form-control" name="step" placeholder="Langkah Membuat" value={{ $make ?  $make->step : ''  }}>
                                 </div>
-                                <div class="form-group">
-                                    <label>Penulis</label>
-                                    <input class="form-control" name="writter" placeholder="Penulis" value={{ $resep ?  $resep->name : ''  }}>
-                                </div>
+
                                 <div class="form-group ">
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>

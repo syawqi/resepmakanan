@@ -36,20 +36,30 @@ class HomeController extends Controller
     }
 
     public function form($id=null){
+        $resep = null;
+        $method = 'POST';
         if ($id){
             $resep = Resep::find($id);
-            return view('form', compact('resep'));
+            $method = 'POST';
+            return view('form', compact('resep', 'method'));
         }
-        return view('form');
+        return view('form', compact('resep', 'method'));
     }
 
     public function save($id=null){
-        if ($id){
-            $resep = Resep::find($id);
-            return view('form', compact('resep'));
-        }
-        return view('form');
+    if ($id){
+        $resep = Resep::find($id);
+    }else{
+        $resep = new Resep;
     }
+    $resep->name = request()->name;
+    $resep->writter = request()->writter;
+
+    $resep->save();
+
+    return redirect('/');
+
+}
 
     public function delete($id){
         $resep = Resep::find($id);
